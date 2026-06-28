@@ -17,7 +17,7 @@ WAZUH_URL = os.getenv("WAZUH_URL")
 WAZUH_USERNAME = os.getenv("WAZUH_USERNAME")
 WAZUH_PASSWORD = os.getenv("WAZUH_PASSWORD")
 
-VERFIY_SSL = os.getenv("VERFIY_SSL","False").lower()=="true"
+VERIFY_SSL = os.getenv("VERIFY_SSL","False").lower()=="true"
 
 # -----------------------------
 # Validation

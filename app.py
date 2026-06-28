@@ -21,14 +21,27 @@ wazuh = WazuhAPI()
 # print("Session:",wazuh.session)
 # print("Token:",wazuh.token)
 
-try:
+# try:
+#     wazuh.authenticate()
+
+#     print("Authentication successful!")
+#     print()
+#     print("Token:")
+#     print(wazuh.token[:50] + "...")
+
+# except Exception as e:
+#     print("Authentication failed!")
+#     print(e)
+
+try: 
     wazuh.authenticate()
 
-    print("Authentication successful!")
-    print()
-    print("Token:")
-    print(wazuh.token[:50] + "...")
+    info = wazuh._request(
+        "GET",
+        "/manager/info"
+    )
 
+    print(info) 
+    
 except Exception as e:
-    print("Authentication failed!")
     print(e)

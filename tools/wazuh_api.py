@@ -14,7 +14,7 @@ from config.settings import(
     WAZUH_PASSWORD,
     WAZUH_URL,
     WAZUH_USERNAME,
-    VERFIY_SSL,
+    VERIFY_SSL,
 )
 
 class WazuhAPI:
@@ -23,8 +23,8 @@ class WazuhAPI:
     def __init__(self):
         self.base_url = WAZUH_URL
         self.username = WAZUH_USERNAME
-        self.passowrd = WAZUH_PASSWORD
-        self.verify_ssl = VERFIY_SSL
+        self.password = WAZUH_PASSWORD
+        self.verify_ssl = VERIFY_SSL
 
         #Reuse HTTP connections
         self.session = requests.Session()
@@ -44,7 +44,7 @@ class WazuhAPI:
 
         response = self.session.post(
             endpoint,
-            auth = HTTPBasicAuth(self.username, self.passowrd),
+            auth = HTTPBasicAuth(self.username, self.password),
             verify=self.verify_ssl,
             timeout=self.timeout,
         )
@@ -58,3 +58,22 @@ class WazuhAPI:
         })
 
         return True
+
+    def _request(self, method, endpoint, **kwargs):
+        """ 
+        Internal helper for making authenticated API requests.
+        """
+
+        url = f"{self.base_url}{endpoint}"
+
+        response = self.session.request(
+            method=method,
+            url=url,
+            verify=self.verify_ssl,
+            timeout=self.timeout,
+            **kwargs
+        )
+
+        response.raise_for_status()
+
+        return response.json()
