@@ -36,12 +36,8 @@ wazuh = WazuhAPI()
 try: 
     wazuh.authenticate()
 
-    info = wazuh._request(
-        "GET",
-        "/manager/info"
-    )
-
-    print(info) 
+    agents = wazuh.get_agents()
+    print(agents)
     
 except Exception as e:
     print(e)

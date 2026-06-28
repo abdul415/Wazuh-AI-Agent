@@ -77,3 +77,13 @@ class WazuhAPI:
         response.raise_for_status()
 
         return response.json()
+    
+    def get_agents(self):
+        """
+        Retrieve all registered Wazuh agents.
+        """
+
+        return self._request(
+            "GET",
+            "/agents"
+        )
