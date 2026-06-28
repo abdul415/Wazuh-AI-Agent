@@ -15,8 +15,20 @@ from tools.wazuh_api import WazuhAPI
 
 wazuh = WazuhAPI()
 
-print("Basee URL:",wazuh.base_url)
-print("Username:",wazuh.username)
-print("Verfy SSL:",wazuh.verify_ssl)
-print("Session:",wazuh.session)
-print("Token:",wazuh.token)
+# print("Basee URL:",wazuh.base_url)
+# print("Username:",wazuh.username)
+# print("Verfy SSL:",wazuh.verify_ssl)
+# print("Session:",wazuh.session)
+# print("Token:",wazuh.token)
+
+try:
+    wazuh.authenticate()
+
+    print("Authentication successful!")
+    print()
+    print("Token:")
+    print(wazuh.token[:50] + "...")
+
+except Exception as e:
+    print("Authentication failed!")
+    print(e)

@@ -8,6 +8,7 @@ Responsible for:
 """
 
 import requests
+from requests.auth import HTTPBasicAuth
 
 from config.settings import(
     WAZUH_PASSWORD,
@@ -33,3 +34,27 @@ class WazuhAPI:
 
         #timeout
         self.timeout = 30
+
+    def authenticate(self):
+        """
+        Authenticate with the Wazuh API and store the JWT token.
+        """
+
+        endpoint = f"{self.base_url}/security/user/authenticate?raw=true"
+
+        response = self.session.post(
+            endpoint,
+            auth = HTTPBasicAuth(self.username, self.passowrd),
+            verify=self.verify_ssl,
+            timeout=self.timeout,
+        )
+
+        response.raise_for_status()
+
+        self.token = response.text
+
+        self.session.headers.update({
+            "Authorization":f"Bearer {self.token}"
+        })
+
+        return True
