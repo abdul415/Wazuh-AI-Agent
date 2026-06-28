@@ -1,11 +1,22 @@
-from config.settings import(
-    WAZUH_PASSWORD,
-    WAZUH_URL,
-    WAZUH_USERNAME,
-    VERFIY_SSL,
-)
+# from config.settings import(
+#     WAZUH_PASSWORD,
+#     WAZUH_URL,
+#     WAZUH_USERNAME,
+#     VERFIY_SSL,
+# )
 
-print("Wazuh URL:",WAZUH_URL)
-print("Username:",WAZUH_USERNAME)
-print("Password:","*" * len(WAZUH_PASSWORD))
-print("Verify SSL:",VERFIY_SSL)
+# print("Wazuh URL:",WAZUH_URL)
+# print("Username:",WAZUH_USERNAME)
+# print("Password:","*" * len(WAZUH_PASSWORD))
+# print("Verify SSL:",VERFIY_SSL)
+
+
+from tools.wazuh_api import WazuhAPI
+
+wazuh = WazuhAPI()
+
+print("Basee URL:",wazuh.base_url)
+print("Username:",wazuh.username)
+print("Verfy SSL:",wazuh.verify_ssl)
+print("Session:",wazuh.session)
+print("Token:",wazuh.token)
