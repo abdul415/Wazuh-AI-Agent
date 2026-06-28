@@ -35,3 +35,14 @@ if missing:
     raise ValueError(
         f"Missing required environment variables: {', '.join(missing)}"
     )
+
+
+# -----------------------------
+# Indexer API Configuration
+# -----------------------------
+
+INDEXER_URL = os.getenv("INDEXER_URL")
+INDEXER_USERNAME = os.getenv("INDEXER_USERNAME")
+INDEXER_PASSWORD = os.getenv("INDEXER_PASSWORD")
+
+VERIFY_SSL = os.getenv("VERIFY_SSL","False").lower()=="true"
