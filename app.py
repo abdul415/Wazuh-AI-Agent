@@ -31,3 +31,11 @@ try:
 except Exception:
     import traceback
     traceback.print_exc()
+
+# from tools.wazuh_api import WazuhAPI
+
+# wazuh = WazuhAPI()
+# wazuh.authenticate()
+
+# print(wazuh.get_agent("000"))
+    

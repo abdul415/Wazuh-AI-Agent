@@ -87,3 +87,18 @@ class WazuhAPI:
             "GET",
             "/agents"
         )
+    
+    def get_agent(self,agent_id:str):
+        """
+        Get details about a single agent.
+        Uses the working/agents endpoint and filter the result.
+        """
+        result = self.get_agents()
+
+        agents = result["data"]["affected_items"]
+
+        for agent in agents:
+            if agent["id"] == agent_id:
+                return agent
+            
+        raise ValueError(f"Agent '{agent_id}' not found.")

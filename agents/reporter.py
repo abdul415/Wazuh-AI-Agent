@@ -18,6 +18,8 @@ Severity: {state['severity']}
 
 Timestamp: {alert.timestamp}
 
+Investigation: {state['investigation']}
+
 Recommendation:
 
 Review this event and determine whether it is expected activity.
