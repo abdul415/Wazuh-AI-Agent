@@ -17,6 +17,8 @@ class InvestigationState(TypedDict):
 
     report: str
 
-    mitre: str
+    mitre: dict
 
     risk: str
+
+    analysis: str

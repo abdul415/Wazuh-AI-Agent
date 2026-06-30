@@ -34,6 +34,11 @@ Techniques: {", ".join(mitre["techniques"])}
 
 Technique IDs: {", ".join(mitre["ids"])}
 
+AI Analysis
+===========
+
+{state["analysis"]}
+
 Recommendation:
 
 Review this event and determine whether it is expected activity.

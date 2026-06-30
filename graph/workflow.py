@@ -8,6 +8,7 @@ from agents.router import route_alert
 from agents.basic_report import basic_report
 from agents.investigator import investigate_alert
 from agents.threat_analyzer import analyze_threat
+from agents.ai_analyst import ai_analyst
 
 builder = StateGraph(InvestigationState)
 
@@ -31,6 +32,11 @@ builder.add_node(
 builder.add_node(
     "threat_analyzer",
     analyze_threat,
+)
+
+builder.add_node(
+    "ai_analyst",
+    ai_analyst,
 )
 
 builder.add_edge(
@@ -57,6 +63,11 @@ builder.add_edge(
 
 builder.add_edge(
     "threat_analyzer",
+    "ai_analyst",
+)
+
+builder.add_edge(
+    "ai_analyst",
     "generate_report",
 )
 
