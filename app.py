@@ -32,10 +32,11 @@ except Exception:
     import traceback
     traceback.print_exc()
 
-# from tools.wazuh_api import WazuhAPI
+# from tools.indexer_api import IndexerAPI
 
-# wazuh = WazuhAPI()
-# wazuh.authenticate()
+# indexer = IndexerAPI()
 
-# print(wazuh.get_agent("000"))
+# alerts = indexer.get_agent_alerts("000")
+
+# print(alerts)
     

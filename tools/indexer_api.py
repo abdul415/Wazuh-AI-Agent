@@ -47,7 +47,7 @@ class IndexerAPI:
 
         return response.json()
     
-    def get_latest_alerts(self, limit: int=10):
+    def get_latest_alerts(self, limit: int = 10):
         """
         Retreive the latest alerts from the Wazuh Indexer
         """
@@ -88,11 +88,39 @@ class IndexerAPI:
 
                 groups = source.get("rule", {}).get("groups", []),
 
-                location=source.get("location", ""),
+                location = source.get("location", ""),
 
-                raw_data=source,
-            )
+                raw_data = source,
+            ) 
 
             alerts.append(alert)
 
         return alerts
+    
+    def get_agent_alerts(self, agent_id:str, limit: int = 5):
+        """
+        Retrieve the latest alerts for a specific agent.
+        """
+
+        query = {
+            "size" : limit,
+            "sort" : [
+                {
+                    "@timestamp":{
+                        "order":"desc"
+                    }
+                }
+            ],
+            "query":{
+                "term":{
+                    "agent.id":agent_id
+                }
+            }
+        }
+
+        result = self._search(
+            "wazuh-alerts-4.x-*",
+            query,
+        )
+
+        return result["hits"]["hits"]
