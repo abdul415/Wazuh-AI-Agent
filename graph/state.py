@@ -16,3 +16,7 @@ class InvestigationState(TypedDict):
     investigation: str
 
     report: str
+
+    mitre: str
+
+    risk: str

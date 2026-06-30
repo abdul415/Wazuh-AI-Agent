@@ -1,10 +1,13 @@
 from graph.state import InvestigationState
 
 def generate_report(state: InvestigationState) -> InvestigationState:
+
     """
     Generate a simple investigation report.
     """
     alert = state["alert"]
+    mitre = state["mitre"]
+    risk = state["risk"]
 
     report = f"""
 Investigation Report
@@ -16,9 +19,20 @@ Rule: {alert.rule_description}
 
 Severity: {state['severity']}
 
+Risk: {state['risk']}
+
 Timestamp: {alert.timestamp}
 
 Investigation: {state['investigation']}
+
+MITRE ATT&CK
+============
+
+Tactics: {", ".join(mitre["tactics"])}
+
+Techniques: {", ".join(mitre["techniques"])}
+
+Technique IDs: {", ".join(mitre["ids"])}
 
 Recommendation:
 

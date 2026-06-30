@@ -25,7 +25,7 @@ state = {
 try:
     result = workflow.invoke(state)
 
-    print("Workflow completed successfully!\n")
+    #print("Workflow completed successfully!\n")
     print(result["report"])
 
 except Exception:

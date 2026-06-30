@@ -5,7 +5,7 @@ def basic_report(state: InvestigationState)-> InvestigationState:
     """
     Handle low-seveirty alerts.
     """
-    print(">>> BASIC REPORT NODE")
+    #print(">>> BASIC REPORT NODE")
     
 
     state['investigation'] = (

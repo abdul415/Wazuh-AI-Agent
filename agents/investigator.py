@@ -8,9 +8,11 @@ def investigate_alert(state: InvestigationState) -> InvestigationState:
     """
     Perform a basic invetsigation.
     """
-    print(">>> INVESTIGATOR NODE")
+    #print(">>> INVESTIGATOR NODE")
 
     agent = wazuh.get_agent(state["alert"].agent_id)
+
+    #rule = state['alert'].raw_data.get("rule",{})
 
     from tools.indexer_api import IndexerAPI
 
