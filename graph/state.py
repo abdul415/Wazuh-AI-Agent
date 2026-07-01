@@ -22,3 +22,5 @@ class InvestigationState(TypedDict):
     risk: str
 
     analysis: str
+
+    plan:dict

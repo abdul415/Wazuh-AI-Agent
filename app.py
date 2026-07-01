@@ -1,5 +1,6 @@
 from tools.indexer_api import IndexerAPI
 from graph.workflow import workflow
+from agents.planner import planner
 
 # Create Indexer client
 indexer = IndexerAPI()
@@ -20,7 +21,12 @@ state = {
     "summary": "",
     "investigation": "",
     "report": "",
+    "mitre": {},
+    "risk": "",
+    "analysis": "",
+    "plan": {}
 }
+
 
 try:
     result = workflow.invoke(state)
@@ -32,11 +38,3 @@ except Exception:
     import traceback
     traceback.print_exc()
 
-# from tools.indexer_api import IndexerAPI
-
-# indexer = IndexerAPI()
-
-# alerts = indexer.get_agent_alerts("000")
-
-# print(alerts)
-    
