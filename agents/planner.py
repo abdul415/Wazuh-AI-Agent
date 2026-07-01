@@ -44,8 +44,7 @@ Example:
     
     response = llm.invoke(prompt)
 
-    print("\n===== Investigation Plan =====")
-    print(response.content)
+    print("[✓] Investigation planned")
 
     try:
         state["plan"] = json.loads(response.content)

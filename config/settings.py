@@ -46,3 +46,20 @@ INDEXER_USERNAME = os.getenv("INDEXER_USERNAME")
 INDEXER_PASSWORD = os.getenv("INDEXER_PASSWORD")
 
 VERIFY_SSL = os.getenv("VERIFY_SSL","False").lower()=="true"
+
+# -----------------------------
+# Validation
+# -----------------------------
+
+required_settings = {
+    "INDEXER_URL" : INDEXER_URL,
+    "INDEXER_USERNAME" : INDEXER_USERNAME,
+    "INDEXER_PASSWORD" : INDEXER_PASSWORD,
+}
+
+missing = [key for key, value in required_settings.items() if not value] 
+
+if missing:
+    raise ValueError(
+        f"Missing required environment variables: {', '.join(missing)}"
+    )

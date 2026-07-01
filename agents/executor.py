@@ -14,8 +14,8 @@ def execute_plan(state: InvestigationState) -> InvestigationState:
     Execute the invetsigation plan produced by the planner.
     """
 
-    print(">>>EXECUTOR NODE")
-
+    print("[✓] Evidence collection started")
+    
     for goal in state["plan"]["goals"]:
 
         handler = GOAL_HANDLERS.get(goal)

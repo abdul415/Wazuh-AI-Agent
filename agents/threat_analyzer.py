@@ -30,5 +30,8 @@ def analyze_threat(state: InvestigationState) -> InvestigationState:
 
     else:
         state["risk"] = "Low"
+
+        print("[✓] Threat analysis completed")
     return state
+
     
