@@ -24,9 +24,10 @@ state = {
     "mitre": {},
     "risk": "",
     "analysis": "",
-    "plan": {}
+    "plan": {},
+    "agent_info": {},
+    "recent_alerts": []
 }
-
 
 try:
     result = workflow.invoke(state)

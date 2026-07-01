@@ -23,4 +23,8 @@ class InvestigationState(TypedDict):
 
     analysis: str
 
-    plan:dict
+    plan: dict
+
+    agent_info: dict
+
+    recent_alerts: list

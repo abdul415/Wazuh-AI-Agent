@@ -1,34 +1,20 @@
 from graph.state import InvestigationState
-from tools.wazuh_api import WazuhAPI
-
-wazuh = WazuhAPI()
-wazuh.authenticate()
 
 def investigate_alert(state: InvestigationState) -> InvestigationState:
     """
     Perform a basic invetsigation.
     """
-    #print(">>> INVESTIGATOR NODE")
+    print("Using agent_info from state")
 
-    agent = wazuh.get_agent(state["alert"].agent_id)
+    agent = state['agent_info']
 
-    #rule = state['alert'].raw_data.get("rule",{})
-
-    from tools.indexer_api import IndexerAPI
-
-    indexer = IndexerAPI()
-
-    recent_alerts = indexer.get_agent_alerts(
-        state["alert"].agent_id,
-        limit = 5,
-    )
+    recent_alerts = state["recent_alerts"]
     history = ""
     for alert in recent_alerts:
-        source = alert["_source"]
 
         history += (
-            f"({source['timestamp']})\n"
-            f"-{source['rule']['description']}\n\n"
+            f"({alert.timestamp})\n"
+            f"-{alert.rule_description}\n\n"
         )
     state["investigation"] = f"""
 Agent Name  : {agent['name']}
